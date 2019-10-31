@@ -39,7 +39,6 @@ const handleDateCheck = (daysOpen, today) => {
       if (daysOftheWeekStrings[daysOpen[2]] === today) {
         isOpen = true;
       } else {
-        console.log("here");
         willOpen = daysOpen[2];
       }
     }

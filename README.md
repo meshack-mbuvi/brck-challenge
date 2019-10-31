@@ -11,8 +11,8 @@ In this project, given a CSV data file, create a react application that users ca
 
 - [x] Users can view all restaurants.
 - [x] Users can filter restaurants by status(open/closed) date and time.
-- [ ] Users can click on a restaurant and view if it is open or closed.
-- [ ] If user clicked on a closed restaurant, we can view it next opening time/date.
+- [x] Users can click on a restaurant and view if it is open or closed.
+- [x] If user clicked on a closed restaurant, we can view it next opening time/date.
 - [x] Pagination
 
 Optional Features

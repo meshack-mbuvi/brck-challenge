@@ -22,7 +22,7 @@ const formatName = name => {
  * @param {array} ratings - contains all ratings for the restaurant
  * @return {Number} ratings - average of the ratings provided for a restaurant.
  */
-const calculateRating = ratings => {
+export const calculateRating = ratings => {
   const numberOfratings = ratings.length;
   if (!numberOfratings) return 0;
 
@@ -37,12 +37,16 @@ const calculateRating = ratings => {
  * @return {DOMnode}
  */
 export const Restaurant = props => {
-  const { name, ratings } = props.data;
+  const {
+    data: { name, ratings },
+    id,
+  } = props;
+
   const rating = calculateRating(ratings);
 
   return (
     <div className="details card col-md-3">
-      <a href={name} className="card-link">
+      <a href={`/${id}`} className="card-link">
         {formatName(name)}
       </a>
 

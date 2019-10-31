@@ -10,6 +10,7 @@ import thunk from "redux-thunk";
 import { ListOfRestaurants } from "../../components/restaurant/listOfRestaurants";
 import Restaurant from "../../components/restaurant/item";
 import Pagination from "../../components/pagination";
+import Filter from "../../components/filter";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -18,8 +19,8 @@ const mockStore = configureStore(middleware);
 const store = mockStore({});
 
 const props = {
-  dispatch: jest.fn(),
   store,
+  dispatch: jest.fn(),
   restaurants: [
     {
       name: "Kushi Tsuru",
@@ -30,6 +31,7 @@ const props = {
   handlePageChange: jest.fn(),
   currentPage: 1,
   limitPerPage: 10,
+  handleOptionChange: jest.fn(),
 };
 
 describe("Restaunts", () => {
@@ -46,5 +48,17 @@ describe("Restaunts", () => {
 
   it("renders <Pagination/> correctly", () => {
     wrapper = shallow(<Pagination {...props} />);
+    expect(wrapper).toMatchSnapshot();
+
+    wrapper.find("#paginationPrevious").simulate("click");
+    expect(props.handlePageChange).toBeCalledTimes(1);
+  });
+
+  it("renders <Filter/> correctly", () => {
+    wrapper = shallow(<Filter {...props} />);
+    expect(wrapper).toMatchSnapshot();
+
+    wrapper.find("select").simulate("change", { target: { value: "open" } });
+    expect(props.handleOptionChange).toBeCalledTimes(1);
   });
 });

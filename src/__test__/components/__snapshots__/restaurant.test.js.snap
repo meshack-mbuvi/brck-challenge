@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Restaunts renders <Filter/> correctly 1`] = `ShallowWrapper {}`;
+
+exports[`Restaunts renders <Pagination/> correctly 1`] = `ShallowWrapper {}`;

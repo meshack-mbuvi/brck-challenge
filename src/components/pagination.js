@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * @description - A stateless component that renders pagination buttons.
+ *
+ * @param {*} props
+ */
 function Pagination(props) {
   const { restaurants, handlePageChange, currentPage, limitPerPage } = props;
   const pageButtons = [];

@@ -10,7 +10,7 @@ In this project, given a CSV data file, create a react application that users ca
 # Required Features
 
 - [x] Users can view all restaurants.
-- [ ] Users can filter restaurants by status(open/closed) date and time.
+- [x] Users can filter restaurants by status(open/closed) date and time.
 - [ ] Users can click on a restaurant and view if it is open or closed.
 - [ ] If user clicked on a closed restaurant, we can view it next opening time/date.
 - [x] Pagination

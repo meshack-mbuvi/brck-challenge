@@ -14,14 +14,17 @@ import sinon from "sinon";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Renders <App />", () => {
-  it("renders without crashing", () => {
-    const getRestaurantsFromCSV = sinon.spy();
-    const wrapper = shallow(
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(
       <Provider store={store}>
         <App />
       </Provider>
     ).debug();
+  });
 
+  it("renders without crashing", () => {
+    const getRestaurantsFromCSV = sinon.spy();
     expect(wrapper).toMatchSnapshot();
     expect(getRestaurantsFromCSV.called);
   });

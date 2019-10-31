@@ -8,7 +8,7 @@ export class ListOfRestaurants extends Component {
 
     const items = restaurants
       ? restaurants.map((restaurant, index) => (
-          <Restaurant data={restaurant} key={index} />
+          <Restaurant data={restaurant} key={index} id={index} />
         ))
       : restaurants;
 

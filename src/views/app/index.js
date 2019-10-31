@@ -8,7 +8,7 @@ import ListOfRestaurants from "../../components/restaurant/listOfRestaurants";
 import Pagination from "../../components/pagination";
 import { Filter } from "../../components/filter";
 
-import { isOpenHelper } from "../../utils";
+import { isOpen } from "../../utils";
 
 class index extends Component {
   constructor(props) {
@@ -94,32 +94,6 @@ class index extends Component {
     this.setState({ show: value });
   };
 
-  /**
-   * @summary - Determines whether a restaurant is open or not.
-   * @description - checks whether a restaurant is open by comparing the
-   *  current date and the time range for a particular restaurant.
-   *
-   * @param (String) time.
-   * @return (Array) - An array with two fields (isOpen,willOpen).
-   */
-  isOpen = time => {
-    let isOpen = false;
-    let willOpen = "";
-
-    if (time.length > 1) {
-      time.forEach(time => {
-        let [openToday, whenWillOpen] = isOpenHelper(time.trim());
-
-        isOpen = isOpen || openToday;
-        willOpen = willOpen || whenWillOpen;
-      });
-    } else {
-      [isOpen, willOpen] = isOpenHelper(time[0]);
-    }
-
-    return [isOpen, willOpen];
-  };
-
   render() {
     let { restaurants } = this.props;
     const { currentPage, limitPerPage, lowerIndex, show } = this.state;
@@ -128,16 +102,16 @@ class index extends Component {
       // filter restaurants by open/closed
       restaurants = restaurants.filter(restaurant => {
         const time = restaurant.opening_time;
-        const [open, willOpen] = this.isOpen(time);
+        const [open, willOpen] = isOpen(time);
 
-        restaurant.isOpen = open;
+        restaurant.open = open;
         restaurant.willOpen = willOpen;
 
         if (show === "open") {
-          return restaurant.isOpen === true;
+          return restaurant.open === true;
         }
 
-        return restaurant.isOpen === false;
+        return restaurant.open === false;
       });
     }
 

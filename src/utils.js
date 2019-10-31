@@ -8,6 +8,16 @@ const daysOftheWeekStrings = {
   Sat: 6,
 };
 
+const daysOftheWeekIndices = {
+  0: "Sun",
+  1: "Mon",
+  2: "Tue",
+  3: "Wed",
+  4: "Thur",
+  5: "Fri",
+  6: "Sat",
+};
+
 /**
  *
  * @param {array} daysOpen - an array containing a range of days
@@ -28,16 +38,20 @@ const handleDateCheck = (daysOpen, today) => {
     } else {
       if (daysOftheWeekStrings[daysOpen[2]] === today) {
         isOpen = true;
+      } else {
+        willOpen = daysOpen[2];
       }
     }
-  } else if (len < 1) {
-    if (daysOftheWeekStrings[daysOpen[2]] === today) {
+  } else if (len < 2) {
+    if (daysOftheWeekStrings[daysOpen[0]] === today) {
       isOpen = true;
+      willOpen = daysOftheWeekIndices[++today];
     } else {
-      willOpen = daysOpen[2];
+      willOpen = daysOftheWeekIndices[++today];
     }
   } else {
     isOpen = true;
+    willOpen = daysOftheWeekIndices[++today];
   }
 
   return [isOpen, willOpen];
@@ -65,7 +79,7 @@ export const isOpenHelper = time => {
   }
 
   if (pm !== "am") {
-    e_hr_in_24hr_format = parseFloat(m_hr) + 12;
+    e_hr_in_24hr_format = parseFloat(e_hr) + 12;
     if (
       m_hr_in_24hr_format <= timeOftheDay &&
       timeOftheDay <= e_hr_in_24hr_format
@@ -73,7 +87,10 @@ export const isOpenHelper = time => {
       isOpen = true;
     }
   } else {
-    if (m_hr_in_24hr_format >= timeOftheDay && timeOftheDay <= e_hr) {
+    if (
+      m_hr_in_24hr_format >= timeOftheDay &&
+      timeOftheDay <= e_hr_in_24hr_format
+    ) {
       isOpen = true;
     }
   }
@@ -86,5 +103,31 @@ export const isOpenHelper = time => {
 
   const [openToday, willOpen] = handleDateCheck(daysOpen, today);
 
-  return [isOpen && openToday, willOpen];
+  return [isOpen && openToday, `${willOpen} ${m_hr} am`];
+};
+
+/**
+ * @summary - Determines whether a restaurant is open or not.
+ * @description - checks whether a restaurant is open by comparing the
+ *  current date and the time range for a particular restaurant.
+ *
+ * @param (String) time.
+ * @return (Array) - An array with two fields (isOpen,willOpen).
+ */
+export const isOpen = time => {
+  let isOpen = false;
+  let willOpen = "";
+
+  if (time.length > 1) {
+    time.forEach(time => {
+      let [openToday, whenWillOpen] = isOpenHelper(time.trim());
+
+      isOpen = isOpen || openToday;
+      willOpen = willOpen || whenWillOpen;
+    });
+  } else {
+    [isOpen, willOpen] = isOpenHelper(time[0]);
+  }
+
+  return [isOpen, willOpen];
 };

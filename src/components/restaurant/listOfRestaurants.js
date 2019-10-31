@@ -7,11 +7,9 @@ export class ListOfRestaurants extends Component {
     const { restaurants } = this.props;
 
     const items = restaurants
-      ? restaurants
-          .slice(0, 12)
-          .map((restaurant, index) => (
-            <Restaurant data={restaurant} key={index} />
-          ))
+      ? restaurants.map((restaurant, index) => (
+          <Restaurant data={restaurant} key={index} />
+        ))
       : restaurants;
 
     return <div className="col-md-12">{items}</div>;

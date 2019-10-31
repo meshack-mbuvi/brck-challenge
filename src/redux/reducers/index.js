@@ -1,3 +1,3 @@
 import { combineReducers } from "redux";
-
-export default combineReducers({});
+import { Restaurants } from "./restaurants";
+export default combineReducers({ Restaurants });

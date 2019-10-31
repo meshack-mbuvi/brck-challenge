@@ -1,24 +1,42 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { connect } from "react-redux";
+import { getRestaurantsFromCSV } from "../../redux/actions/restaurants";
+
+import ListOfRestaurants from "../../components/restaurant/listOfRestaurants";
+
+class index extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(getRestaurantsFromCSV());
+  }
+
+  render() {
+    const { restaurants } = this.props;
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12 col-md-3">
+            Recent views to be displayed here
+          </div>
+
+          <div className="col-sm-12 col-md-9">
+            <div className="row main">
+              <ListOfRestaurants restaurants={restaurants} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = ({ Restaurants }) => {
+  return {
+    restaurants: Restaurants.restaurants || [],
+  };
+};
+
+export default connect(mapStateToProps)(index);

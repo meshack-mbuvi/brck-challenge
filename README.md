@@ -33,3 +33,17 @@ Optional Features
 - The last command above will automatically open your browser point to this link [http://localhost:3000/](http://localhost:3000/) . If it does not open the link, open it manually.
 
 The live application can be viewed [here](https://brck-challenge.herokuapp.com/)
+
+# Running test
+
+- Open your terminal
+- Navigate to the product directory
+- Execute `npm test` to run the tests
+
+## Developer
+
+[Meshack Mbuvi](https://github.com/meshack-mbuvi)
+
+# Credits
+
+[BRKC](https://www.brck.com/)

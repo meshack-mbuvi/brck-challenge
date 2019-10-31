@@ -131,7 +131,8 @@ class index extends Component {
                 )}
               />
             </div>
-            <div className="ml-4">
+
+            <div className="ml-4 limit">
               {" "}
               Select limit per page:{" "}
               <select

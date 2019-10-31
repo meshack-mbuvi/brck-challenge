@@ -18,10 +18,10 @@ class SingleRestaurant extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, location } = this.props;
     dispatch(getRestaurantsFromCSV());
+
     // Extract restaurant index
-    const { location } = this.props;
     const [, restaurantId] = location.pathname.split("/");
 
     this.setState({
@@ -48,7 +48,9 @@ class SingleRestaurant extends Component {
         <div className="container">
           <div className="row mt-4">
             <div className="col-sm-12 col-md-3" />
-            No resturant found with given id
+            <div className="col-sm-12 col-md-6">
+              <p>No resturant found with given id</p>
+            </div>
           </div>
         </div>
       );

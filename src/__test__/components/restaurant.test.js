@@ -1,13 +1,13 @@
 import React from "react";
 
-import Enzyme, { shallow, mount } from "enzyme";
+import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import expect from "expect";
 
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
-import { ListOfRestaurants } from "../../components/restaurant/listOfRestaurants";
+import ListOfRestaurants from "../../components/restaurant/listOfRestaurants";
 import Restaurant from "../../components/restaurant/item";
 import Pagination from "../../components/pagination";
 import Filter from "../../components/filter";

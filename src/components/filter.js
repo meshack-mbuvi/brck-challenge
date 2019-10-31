@@ -4,7 +4,7 @@ export function Filter(props) {
   const { handleOptionChange } = props;
 
   return (
-    <div>
+    <div className="filter">
       Filter by:{" "}
       <select
         name="filter"

@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "csv-parser": "^2.3.1",
+    "papaparse": "^5.1.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "^7.1.1",
     "react-scripts": "3.2.0",
+    "react-star-ratings": "^2.3.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
   },
@@ -35,6 +38,12 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.7",
-    "nyc": "^14.1.1"
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "expect": "^24.9.0",
+    "nyc": "^14.1.1",
+    "react-test-renderer": "^16.11.0",
+    "redux-mock-store": "^1.5.3",
+    "sinon": "^7.5.0"
   }
 }

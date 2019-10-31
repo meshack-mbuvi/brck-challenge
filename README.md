@@ -13,9 +13,23 @@ In this project, given a CSV data file, create a react application that users ca
 - [ ] Users can filter restaurants by status(open/closed) date and time.
 - [ ] Users can click on a restaurant and view if it is open or closed.
 - [ ] If user clicked on a closed restaurant, we can view it next opening time/date.
-- [ ] Pagination
+- [x] Pagination
 
 Optional Features
 
 - [ ] Users can rate a restaurant.
 - [ ] Users can review a restaurant.
+
+# Set up locally
+
+- Open your terminal of choice
+- Ensure you have installed git and node in your system
+- Clone this repository using the command `git clone https://github.com/meshack-mbuvi/brck-challenge.git`
+- Run the following commands:
+  - `cd brck-challenge`
+  - `git checkout develop`
+  - `npm install` to install project dependencies
+  - `npm start` to start the application
+- The last command above will automatically open your browser point to this link [http://localhost:3000/](http://localhost:3000/) . If it does not open the link, open it manually.
+
+The live application can be viewed [here](https://brck-challenge.herokuapp.com/)

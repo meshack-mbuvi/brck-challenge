@@ -9,6 +9,7 @@ import thunk from "redux-thunk";
 
 import { ListOfRestaurants } from "../../components/restaurant/listOfRestaurants";
 import Restaurant from "../../components/restaurant/item";
+import Pagination from "../../components/pagination";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -26,6 +27,9 @@ const props = {
       opening_time: ["Mon-Sun 11 am - 10 pm"],
     },
   ],
+  handlePageChange: jest.fn(),
+  currentPage: 1,
+  limitPerPage: 10,
 };
 
 describe("Restaunts", () => {
@@ -38,5 +42,9 @@ describe("Restaunts", () => {
   it("renders <Restaurant/> component", () => {
     wrapper = shallow(<Restaurant data={props.restaurants[0]} />);
     expect(wrapper.find(".details").length).toEqual(1);
+  });
+
+  it("renders <Pagination/> correctly", () => {
+    wrapper = shallow(<Pagination {...props} />);
   });
 });
